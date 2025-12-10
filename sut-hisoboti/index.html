@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sut Sotish Hisoboti</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-milk-bottle"></i>
+                <h1>Sut Sotish Hisoboti</h1>
+            </div>
+            <div class="date-info">
+                <p id="current-date"></p>
+                <p id="total-amount">Jami: 0 L</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2><i class="fas fa-plus-circle"></i> Yangi Sotuv Qo'shish</h2>
+                <div class="input-form">
+                    <div class="form-group">
+                        <label for="quantity"><i class="fas fa-weight"></i> Miqdor (litr)</label>
+                        <input type="number" id="quantity" step="0.5" min="0.5" placeholder="Masalan: 2.5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="price"><i class="fas fa-money-bill-wave"></i> Narx (so'm)</label>
+                        <input type="number" id="price" placeholder="1 litr narxi" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer"><i class="fas fa-user"></i> Mijoz Ismi</label>
+                        <input type="text" id="customer" placeholder="Mijoz ismini kiriting">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type"><i class="fas fa-cow"></i> Sut Turi</label>
+                        <select id="type">
+                            <option value="sigir">Sigir suti</option>
+                            <option value="echki">Echki suti</option>
+                            <option value="qaymoq">Qaymoqli sut</option>
+                            <option value="pasteriz">Pasterizatsiyalangan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time"><i class="fas fa-clock"></i> Vaqt</label>
+                        <input type="time" id="time" value="09:00">
+                    </div>
+                    
+                    <button id="add-btn" class="btn-primary">
+                        <i class="fas fa-save"></i> Sotuvni Saqlash
+                    </button>
+                </div>
+            </section>
+
+            <section class="summary-section">
+                <h2><i class="fas fa-chart-bar"></i> Bugungi Hisobot</h2>
+                <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #4CAF50;">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Jami Miqdor</h3>
+                            <p id="total-quantity">0 L</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #2196F3;">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Jami Summa</h3>
+                            <p id="total-sum">0 so'm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #FF9800;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sotuvlar Soni</h3>
+                            <p id="total-sales">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #9C27B0;">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>O'rtacha Narx</h3>
+                            <p id="avg-price">0 so'm</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="records-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list-alt"></i> Sotuvlar Ro'yxati</h2>
+                    <div class="actions">
+                        <button id="filter-btn" class="btn-secondary">
+                            <i class="fas fa-filter"></i> Filtr
+                        </button>
+                        <button id="export-btn" class="btn-success">
+                            <i class="fas fa-file-export"></i> Yuklab Olish
+                        </button>
+                        <button id="clear-btn" class="btn-danger">
+                            <i class="fas fa-trash"></i> Tozalash
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filter-options" id="filter-options">
+                    <select id="filter-type">
+                        <option value="all">Barcha turlar</option>
+                        <option value="sigir">Sigir suti</option>
+                        <option value="echki">Echki suti</option>
+                        <option value="qaymoq">Qaymoqli sut</option>
+                        <option value="pasteriz">Pasterizatsiyalangan</option>
+                    </select>
+                    <input type="date" id="filter-date">
+                </div>
+                
+                <div class="table-container">
+                    <table id="sales-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Vaqt</th>
+                                <th>Miqdor (L)</th>
+                                <th>Narx</th>
+                                <th>Summa</th>
+                                <th>Mijoz</th>
+                                <th>Turi</th>
+                                <th>Harakatlar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sales-body">
+                            <!-- Bu yerda JavaScript orqali ma'lumotlar chiqadi -->
+                            <tr id="empty-row">
+                                <td colspan="8" class="empty-message">
+                                    <i class="fas fa-inbox"></i>
+                                    <p>Hozircha sotuvlar mavjud emas. Birinchi sotuvni qo'shing!</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Sut Sotish Hisoboti. Barcha huquqlar himoyalangan.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
